@@ -5,7 +5,7 @@ import { Fragment } from 'react';
 
 const inter = Inter({ subsets: ["latin"] });
 
-export function Home() {
+export default function Home() {
   return (
     <Fragment>
       <h1 className="text-2xl md:text-3xl font-bold italic mb-6">Debug Less, Ship More</h1>
