@@ -1,12 +1,11 @@
 {
-    "name": "HallB Blog",
-    "dockerFile": "./dev-environment/Dockerfile",
-    "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
-    "portsAttributes": {
-      "9000": {
-        "label": "Hello Remote World",
-        "onAutoForward": "notify"
-      }
-    },
-    "postCreateCommand": "yarn install && yarn dev"
+  "name": "HallB Blog",
+  "dockerFile": "./dev-environment/Dockerfile",
+  "workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
+  "portsAttributes": {
+    "9000": {
+      "label": "Hello Remote World",
+      "onAutoForward": "notify"
+    }
   }
+}

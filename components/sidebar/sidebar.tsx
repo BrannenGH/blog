@@ -4,9 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHouse, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import { SidebarItem } from "./sidebar-item";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export function Sidebar() {
+export const Sidebar = () => {
   return (
     <div className="h-screen flex overflow-hidden bg-gray-100">
       {/* Sidebar */}
@@ -28,4 +26,4 @@ export function Sidebar() {
       </div>
     </div>
   );
-}
+};

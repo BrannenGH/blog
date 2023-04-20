@@ -6,13 +6,13 @@ import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export function SidebarItem({
+export const SidebarItem = ({
   icon,
   label,
 }: {
   icon: IconProp;
   label: string;
-}) {
+}) => {
   return (
     <a
       href="#"
@@ -27,4 +27,4 @@ export function SidebarItem({
       </div>
     </a>
   );
-}
+};
