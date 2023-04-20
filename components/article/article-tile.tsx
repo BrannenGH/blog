@@ -1,5 +1,5 @@
 import { Article } from "@/models";
-import { ArticleLink } from ".";
+import { ArticleLink } from "./article-link";
 
 export const ArticleTile = ({ article }: { article: Article }) => {
   return (
