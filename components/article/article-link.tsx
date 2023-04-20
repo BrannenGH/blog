@@ -1,4 +1,4 @@
-import { Article, RawArticle } from "@/models";
+import { Article } from "@/models";
 import Link from "next/link";
 
 export const ArticleLink = ({

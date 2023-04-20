@@ -1,4 +1,3 @@
-import { Sidebar } from "../components/sidebar";
 import { Html, Head, Main, NextScript } from "next/document";
 import { PageWrapper } from "@/components/page-wrapper";
 
