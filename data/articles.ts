@@ -1,11 +1,11 @@
-import { Article } from "@/models"
+import { RawArticle } from "@/models";
 
-export const articles: Article[] = [
-    {
-        title: "How to filter test cases when executing by Azure DevOps test plan",
-        author: "Brannen Hall",
-        date: "2023-04-18",
-        body: `
+export const articles: RawArticle[] = [
+  {
+    title: "How to filter test cases when executing by Azure DevOps test plan",
+    author: "Brannen Hall",
+    date: "2023-04-18",
+    content: `
 When using the \`testPlan\` method to select VSTest tests for execution in Azure DevOps (ADO) YAML pipelines, you cannot directly use the \`testFiltercriteria\` option on the VSTest@2 task to filter test cases — it only works when using the \`testAssemblies\` test selector.
 Instead, you can add it to the test run parameters using \`overrideTestRunParameters\` and the \`TestCaseFilter\` run parameter. Please see the example below, where \`your_filter\` is the test filter criteria.
 
@@ -22,7 +22,8 @@ Instead, you can add it to the test run parameters using \`overrideTestRunParame
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 \`\`\``,
-        contentPreview: "When using the \`testPlan\` method to select VSTest tests for execution in Azure DevOps (ADO) YAML pipelines"
-    }
+    contentPreview:
+      "When using the `testPlan` method to select VSTest tests for execution in Azure DevOps (ADO) YAML pipelines",
+    tags: ["Code Snippet"],
+  },
 ];
-
