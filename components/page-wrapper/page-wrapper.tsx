@@ -31,7 +31,7 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
         <main className="bg-white p-2 h-full rounded">{children}</main>
       </div>
       <Drawer
-        show={showNav}
+        hide={!showNav}
         className="bg-gray-100 fixed top-0 w-screen h-screen z-10 md:static md:w-1/5 md:h-full"
       >
         <Sidebar onClose={isDesktop ? undefined : () => setShowNav(false)} />

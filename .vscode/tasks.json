@@ -16,6 +16,16 @@
       "runOptions": {
         "runOn": "folderOpen"
       }
+    },
+    {
+      "label": "Run tests (in watch mode)",
+      "type": "npm",
+      "script": "test",
+      "problemMatcher": [],
+      "dependsOn": ["Install"],
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
     }
   ]
 }
