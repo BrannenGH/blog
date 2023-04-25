@@ -20,9 +20,7 @@ export const IconLink = ({
 }: {
   icon: IconProp;
   label: string;
-  href: string;
-  className?: string;
-} & typeof Link) => {
+} & Parameters<typeof Link>[0]) => {
   return (
     <Link
       {...props}
