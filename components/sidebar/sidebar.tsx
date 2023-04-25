@@ -1,9 +1,17 @@
 import { faHouse, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
-import { SidebarItem } from "./sidebar-item";
+import { IconLink } from "./icon-link";
 import Image from "next/image";
 import userImage from "@/public/user.jpg";
 import { Button } from "../common";
 
+/**
+ * A sidebar component containing user information, navigation links, and an optional close button.
+ *
+ * @component
+ * @param {function} [props.onClose] - Optional function to handle sidebar closing, does not render the close button if not provided 
+ * @param {string} [props.className] - Additional CSS classes to apply to the component
+ * @param {React.HTMLAttributes<HTMLDivElement>} props - Any other attributes to pass to the root element
+ */
 export const Sidebar = ({ onClose, className, ...props } : React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement> & { onClose?: () => void}) => {
   return (
     <div 
@@ -18,8 +26,8 @@ export const Sidebar = ({ onClose, className, ...props } : React.DetailedHTMLPro
         <span className="mr-1">Blog by Brannen Hall</span>
       </div>
       <nav className="flex flex-col mt-5 space-y-1">
-        <SidebarItem icon={faHouse} label="Home" href="/" />
-        <SidebarItem icon={faPenToSquare} label="Posts" href="/post/" />
+        <IconLink icon={faHouse} label="Home" href="/" />
+        <IconLink icon={faPenToSquare} label="Posts" href="/post/" />
         {onClose ? <Button onClick={onClose}>Close</Button> : null}
       </nav>
     </div>

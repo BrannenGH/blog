@@ -6,6 +6,12 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Button } from "../common";
 import { Drawer } from "../common";
 
+/**
+ * PageWrapper is a layout component that wraps the main content of the page.
+ *
+ * @component
+ * @param {React.ReactNode} props.children - The main content of the page to be wrapped by the PageWrapper
+ */
 export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   // Since Next is pre-rendering, we need to always render for mobile, then change for desktop.
   const [isDesktop, setIsDesktop] = useState(false);
