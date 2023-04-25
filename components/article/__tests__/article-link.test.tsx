@@ -16,7 +16,11 @@ it("renders the ArticleLink with correct href", () => {
 });
 
 it("renders the ArticleLink with custom content", () => {
-  render(<ArticleLink article={sampleArticle} data-testid="sampleArticleLink"><span>Custom content</span></ArticleLink>);
+  render(
+    <ArticleLink article={sampleArticle} data-testid="sampleArticleLink">
+      <span>Custom content</span>
+    </ArticleLink>
+  );
 
   const link = screen.getByTestId("sampleArticleLink");
   expect(link).toBeInTheDocument();
@@ -24,7 +28,11 @@ it("renders the ArticleLink with custom content", () => {
 });
 
 it("renders the ArticleLink with additional props", () => {
-  render(<ArticleLink article={sampleArticle} data-testid="custom-test-id">Read more</ArticleLink>);
+  render(
+    <ArticleLink article={sampleArticle} data-testid="custom-test-id">
+      Read more
+    </ArticleLink>
+  );
 
   const link = screen.getByTestId("custom-test-id");
   expect(link).toBeInTheDocument();

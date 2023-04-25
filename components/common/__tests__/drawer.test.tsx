@@ -4,9 +4,7 @@ import { Drawer } from "..";
 
 it("renders drawer with hide prop as false", () => {
   const { getByTestId } = render(
-    <Drawer data-testid="test-drawer">
-      Drawer Content
-    </Drawer>
+    <Drawer data-testid="test-drawer">Drawer Content</Drawer>
   );
   expect(getByTestId("test-drawer")).toBeInTheDocument();
   expect(getByTestId("test-drawer")).toHaveClass("left-0");
@@ -23,9 +21,7 @@ it("renders drawer with hide prop as true", () => {
 
 it("handles onTransitionEnd event", async () => {
   const { getByTestId, queryByTestId, rerender } = render(
-    <Drawer data-testid="test-drawer">
-      Drawer Content
-    </Drawer>
+    <Drawer data-testid="test-drawer">Drawer Content</Drawer>
   );
 
   const drawer = getByTestId("test-drawer");
@@ -42,5 +38,7 @@ it("handles onTransitionEnd event", async () => {
   // Simulate the transition end event
   fireEvent.transitionEnd(drawer);
 
-  await waitFor(() => expect(queryByTestId("test-drawer")).not.toBeInTheDocument());
+  await waitFor(() =>
+    expect(queryByTestId("test-drawer")).not.toBeInTheDocument()
+  );
 });

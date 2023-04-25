@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { ArticleTile } from "@/components/article/article-tile";
+import { ArticleTile } from "@/components";
 import { getArticles } from "@/services/article";
 import { Article } from "@/models";
 

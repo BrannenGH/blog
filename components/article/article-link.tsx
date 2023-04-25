@@ -3,7 +3,7 @@ import Link from "next/link";
 
 /**
  * Link to an article.
- * 
+ *
  * @component
  * @param {Object} props
  * @param {Article} props.article - The target article for the link

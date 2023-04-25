@@ -2,6 +2,262 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Cormorant Garamond */
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/Cormorant_Garamond/CormorantGaramond-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/Cormorant_Garamond/CormorantGaramond-Bold.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/Cormorant_Garamond/CormorantGaramond-Italic.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/fonts/Cormorant_Garamond/CormorantGaramond-BoldItalic.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/styles/fonts/Cormorant_Garamond/CormorantGaramond-Light.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/styles/fonts/Cormorant_Garamond/CormorantGaramond-LightItalic.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/styles/fonts/Cormorant_Garamond/CormorantGaramond-Medium.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/styles/fonts/Cormorant_Garamond/CormorantGaramond-MediumItalic.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/styles/fonts/Cormorant_Garamond/CormorantGaramond-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Cormorant Garamond";
+  src: url("/styles/fonts/Cormorant_Garamond/CormorantGaramond-SemiBoldItalic.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-Regular.ttf")
+    format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-Bold.ttf") format("truetype");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-Italic.ttf") format("truetype");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-BoldItalic.ttf")
+    format("truetype");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-BlackItalic.ttf")
+    format("truetype");
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-BoldItalic.ttf")
+    format("truetype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-ExtraBold.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-ExtraBoldItalic.ttf")
+    format("truetype");
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-ExtraLight.ttf")
+    format("truetype");
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-ExtraLightItalic.ttf")
+    format("truetype");
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-LightItalic.ttf")
+    format("truetype");
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-MediumItalic.ttf")
+    format("truetype");
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-SemiBold.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-SemiBoldItalic.ttf")
+    format("truetype");
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Raleway";
+  src: url("/styles/fonts/Raleway/static/Raleway-ThinItalic.ttf")
+    format("truetype");
+  font-weight: 100;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

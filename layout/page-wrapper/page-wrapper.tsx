@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import { Sidebar } from "../sidebar";
+import { useState } from "react";
+import { Sidebar } from "..";
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Button } from "../common";
-import { Drawer } from "../common";
+import { Button, TextHeader, Drawer } from "@/components";
 
 /**
  * PageWrapper is a layout component that wraps the main content of the page.
@@ -21,24 +20,28 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   });
 
   return (
-    <div className="bg-gray-100 md:flex items-stretch h-screen">
+    <div className="font-body bg-mint-green-100 md:flex items-stretch h-screen">
       <div className="md:flex md:flex-col w-full ml-4">
         <header className="flex flex-row justify-between w-full">
-          <h1 className="flex-auto text-2xl md:text-3xl font-bold italic my-6">
+          <TextHeader className="flex-auto text-2xl md:text-3xl font-bold italic my-6">
             Debug Less, Ship More
-          </h1>
-          <Button
-            className="flex-none w-3 mr-2"
-            onClick={() => setShowNav(!showNav)}
-          >
-            <FontAwesomeIcon icon={faBars} />
-          </Button>
+          </TextHeader>
+          <div className="flex fex-row justify-center items-center">
+            <Button
+              className="w-10 h-10 m-2"
+              onClick={() => setShowNav(!showNav)}
+            >
+              <span>
+                <FontAwesomeIcon icon={faBars} />
+              </span>
+            </Button>
+          </div>
         </header>
         <main className="bg-white p-2 h-full rounded">{children}</main>
       </div>
       <Drawer
         hide={!showNav}
-        className="bg-gray-100 fixed top-0 w-screen h-screen z-10 md:static md:w-1/5 md:h-full"
+        className="bg-mint-green-100 fixed top-0 w-screen h-screen z-10 md:static md:w-1/5 md:h-full"
       >
         <Sidebar onClose={isDesktop ? undefined : () => setShowNav(false)} />
       </Drawer>

@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import { ArticleTile } from "@/components/article/article-tile";
+import { ArticleTile, TextHeader } from "@/components";
 import { getArticles } from "@/services/article";
 import { Article } from "@/models";
 
@@ -13,9 +13,11 @@ export async function getStaticProps() {
 const Home = ({ articles }: { articles: Article[] }) => {
   return (
     <Fragment>
-      <h1 className="text-4xl font-bold mb-8 mb-6">Latest Articles</h1>
+      <TextHeader className="text-4xl font-bold mb-8 mb-6">
+        Latest Articles
+      </TextHeader>
       {articles.map((article, i) => (
-        <ArticleTile article={article} key={i} />
+        <ArticleTile className="bg-mint-green-100" article={article} key={i} />
       ))}
     </Fragment>
   );
