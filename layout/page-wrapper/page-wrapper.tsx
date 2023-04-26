@@ -28,7 +28,7 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
           <div className="flex flex-row items-center">
             <Image src={logo} alt="logo" className="w-10 h-10 m-2" />
             <TextHeader className="flex-auto text-2xl md:text-3xl font-bold my-6">
-              Brannen
+              Brannen's Bytes
             </TextHeader>
           </div>
           <div className="flex fex-row justify-center items-center">
