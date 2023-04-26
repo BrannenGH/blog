@@ -23,7 +23,13 @@ export const IconLink = ({
   label: string;
 } & Parameters<typeof Link>[0]) => {
   return (
-    <Link {...props} href={href} className={`flex flex-row items-baseline justify-center ${className ?? ""}`}>
+    <Link
+      {...props}
+      href={href}
+      className={`flex flex-row items-baseline justify-center ${
+        className ?? ""
+      }`}
+    >
       <FontAwesomeIcon icon={icon} className="mr-1" />
       <span>{label}</span>
     </Link>

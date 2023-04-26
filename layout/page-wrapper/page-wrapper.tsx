@@ -22,8 +22,8 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
   });
 
   return (
-    <div className="font-body bg-mint-green-100 md:flex items-stretch h-screen">
-      <div className="md:flex md:flex-col w-full ml-4">
+    <div className="font-body bg-mint-green-100 md:flex items-stretch h-screen min-w-full overflow-x-hidden box-border">
+      <div className="md:flex md:flex-col w-full m-1 md:m-4">
         <header className="flex flex-row justify-between w-full">
           <div className="flex flex-row items-center">
             <Image src={logo} alt="logo" className="w-10 h-10 m-2" />

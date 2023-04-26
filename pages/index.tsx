@@ -13,7 +13,7 @@ export async function getStaticProps() {
 const Home = ({ articles }: { articles: Article[] }) => {
   return (
     <Fragment>
-      <TextHeader className="text-4xl font-bold mb-8 mb-6">
+      <TextHeader className="text-center w-full md:text-left text-4xl font-bold mb-8 mb-6">
         Latest Articles
       </TextHeader>
       <div className="flex flex-col flex-wrap">

@@ -19,10 +19,9 @@ export const Sidebar = ({
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 > & { onClose?: () => void }) => {
-
   const navigationItems = [
     { icon: faHouse, label: "Home", href: "/" },
-    { icon: faPenToSquare, label: "Blog", href: "/blog" }
+    { icon: faPenToSquare, label: "Blog", href: "/blog" },
   ];
 
   return (
@@ -32,7 +31,7 @@ export const Sidebar = ({
         className ?? ""
       }`}
     >
-      <div className="flex flex-col items-center justify-center h-1/6">
+      <div className="flex flex-col items-center justify-center h-1/2 md:h-1/6">
         <Image
           src={userImage}
           alt="user"
@@ -44,12 +43,18 @@ export const Sidebar = ({
         <span className="mr-1">Blog by Brannen Hall</span>
       </div>
       <nav className="flex flex-col mt-5 space-y-1 w-full">
-        {navigationItems.map(({href, icon, label}, i) => (
+        {navigationItems.map(({ href, icon, label }, i) => (
           <Button
             key={i}
             className="w-full"
-            component={({className, ...props}: any) => (
-              <IconLink {...props} className={`${className} text-center`} icon={icon} label={label} href={href}/>
+            component={({ className, ...props }: any) => (
+              <IconLink
+                {...props}
+                className={`${className} text-center`}
+                icon={icon}
+                label={label}
+                href={href}
+              />
             )}
           />
         ))}
