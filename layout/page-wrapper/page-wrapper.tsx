@@ -4,6 +4,8 @@ import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { Button, TextHeader, Drawer } from "@/components";
+import logo from "@/public/logo.png";
+import Image from 'next/image';
 
 /**
  * PageWrapper is a layout component that wraps the main content of the page.
@@ -23,9 +25,12 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
     <div className="font-body bg-mint-green-100 md:flex items-stretch h-screen">
       <div className="md:flex md:flex-col w-full ml-4">
         <header className="flex flex-row justify-between w-full">
-          <TextHeader className="flex-auto text-2xl md:text-3xl font-bold italic my-6">
-            Debug Less, Ship More
-          </TextHeader>
+          <div className="flex flex-row items-center">
+            <Image src={logo} alt="logo" className="w-10 h-10 m-2" />
+            <TextHeader className="flex-auto text-2xl md:text-3xl font-bold my-6">
+              Brannen
+            </TextHeader>
+          </div>
           <div className="flex fex-row justify-center items-center">
             <Button
               className="w-10 h-10 m-2"

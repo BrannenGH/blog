@@ -10,7 +10,7 @@ export const TextHeader = ({
 
   return (
     <Component
-      className={`text-soft-pink-600 drop-shadow-sm font-heading ${className}`}
+      className={`text-grey-600 hover:text-soft-pink-600 drop-shadow-sm font-heading ${className}`}
       {...props}
     />
   );

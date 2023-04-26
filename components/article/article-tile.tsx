@@ -1,6 +1,6 @@
 import { Article } from "@/models";
 import { ArticleLink } from "./article-link";
-import { TextHeader, Button } from "..";
+import { TextHeader, Button, Text } from "..";
 
 /**
  * Displays a summary of an article, including its title, author, date, and preview.
@@ -32,9 +32,9 @@ export const ArticleTile = ({
         >
           {article.title}
         </TextHeader>
-        <p className="text-sm text-gray-600 mb-2">{article.author}</p>
-        <p className="text-sm text-gray-600">{article.date}</p>
-        <p className="text-sm text-gray-600 mb-4">{article.contentPreview}</p>
+        <Text className="text-sm text-gray-600 mb-2">{article.author}</Text>
+        <Text className="text-sm text-gray-600">{article.date}</Text>
+        <Text className="text-sm text-gray-600 mb-4">{article.contentPreview}</Text>
         <Button
           component={(props: any) => (
             <ArticleLink {...props} article={article} />
