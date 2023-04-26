@@ -34,7 +34,9 @@ export const ArticleTile = ({
         </TextHeader>
         <Text className="text-sm text-gray-600 mb-2">{article.author}</Text>
         <Text className="text-sm text-gray-600">{article.date}</Text>
-        <Text className="text-sm text-gray-600 mb-4">{article.contentPreview}</Text>
+        <Text className="text-sm text-gray-600 mb-4">
+          {article.contentPreview}
+        </Text>
         <Button
           component={(props: any) => (
             <ArticleLink {...props} article={article} />

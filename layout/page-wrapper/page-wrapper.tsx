@@ -3,9 +3,9 @@ import { Sidebar } from "..";
 import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
-import { Button, TextHeader, Drawer } from "@/components";
+import { Button, TextHeader, Drawer, Link } from "@/components";
 import logo from "@/public/logo.png";
-import Image from 'next/image';
+import Image from "next/image";
 
 /**
  * PageWrapper is a layout component that wraps the main content of the page.
@@ -27,9 +27,11 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
         <header className="flex flex-row justify-between w-full">
           <div className="flex flex-row items-center">
             <Image src={logo} alt="logo" className="w-10 h-10 m-2" />
-            <TextHeader className="flex-auto text-2xl md:text-3xl font-bold my-6">
-              Brannen's Bytes
-            </TextHeader>
+            <Link href="/">
+              <TextHeader className="flex-auto text-2xl md:text-3xl font-bold my-6">
+                Brannen's Bytes
+              </TextHeader>
+            </Link>
           </div>
           <div className="flex fex-row justify-center items-center">
             <Button
@@ -42,7 +44,9 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
             </Button>
           </div>
         </header>
-        <main className="bg-white p-2 h-full rounded">{children}</main>
+        <main className="bg-white p-2 h-full rounded overflow-hidden">
+          {children}
+        </main>
       </div>
       <Drawer
         hide={!showNav}

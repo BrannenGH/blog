@@ -1,6 +1,6 @@
 import { faHouse, faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import userImage from "@/public/user.jpg";
+import userImage from "@/public/user.png";
 import { Button, IconLink } from "@/components";
 
 /**
@@ -19,6 +19,12 @@ export const Sidebar = ({
   React.HTMLAttributes<HTMLDivElement>,
   HTMLDivElement
 > & { onClose?: () => void }) => {
+
+  const navigationItems = [
+    { icon: faHouse, label: "Home", href: "/" },
+    { icon: faPenToSquare, label: "Blog", href: "/blog" }
+  ];
+
   return (
     <div
       {...props}
@@ -26,32 +32,27 @@ export const Sidebar = ({
         className ?? ""
       }`}
     >
-      <div className="flex flex-col content-center justify-center h-1/6">
+      <div className="flex flex-col items-center justify-center h-1/6">
         <Image
           src={userImage}
           alt="user"
-          className="rounded-full w-32 h-32 object-cover h-12 w-12"
+          className="rounded-full object-cover"
+          width={120}
+          height={120}
+          sizes="(min-width: 1024px) 120px, (min-width: 768px) 128px, (min-width: 640px) 96px, 64px"
         />
         <span className="mr-1">Blog by Brannen Hall</span>
       </div>
       <nav className="flex flex-col mt-5 space-y-1 w-full">
-        <Button
-          className="w-full"
-          component={(props: any) => (
-            <IconLink {...props} icon={faHouse} label="Home" href="/" />
-          )}
-        />
-        <Button
-          className="w-full"
-          component={(props: any) => (
-            <IconLink
-              {...props}
-              icon={faPenToSquare}
-              label="Posts"
-              href="/post/"
-            />
-          )}
-        />
+        {navigationItems.map(({href, icon, label}, i) => (
+          <Button
+            key={i}
+            className="w-full"
+            component={({className, ...props}: any) => (
+              <IconLink {...props} className={`${className} text-center`} icon={icon} label={label} href={href}/>
+            )}
+          />
+        ))}
         {onClose ? <Button onClick={onClose}>Close</Button> : null}
       </nav>
     </div>

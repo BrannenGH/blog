@@ -16,9 +16,15 @@ const Home = ({ articles }: { articles: Article[] }) => {
       <TextHeader className="text-4xl font-bold mb-8 mb-6">
         Latest Articles
       </TextHeader>
-      {articles.map((article, i) => (
-        <ArticleTile className="bg-mint-green-100" article={article} key={i} />
-      ))}
+      <div className="flex flex-col flex-wrap">
+        {articles.map((article, i) => (
+          <ArticleTile
+            className="bg-mint-green-100 w-full md:w-1/3"
+            article={article}
+            key={i}
+          />
+        ))}
+      </div>
     </Fragment>
   );
 };
