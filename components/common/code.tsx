@@ -24,6 +24,10 @@ type CodeProps = {
    * The code to highlight.
    */
   code: string;
+  /**
+   * The programming language to highlight.
+   */
+  language: string;
 } & (
   | React.DetailedHTMLProps<
       React.HTMLAttributes<HTMLPreElement>,
@@ -38,10 +42,11 @@ type CodeProps = {
 export const Code = ({
   code,
   block,
+  language, 
   ...props
 }: CodeProps) => (
-  <Highlight theme={themes.github} code={code} language="tsx">
-    {RenderCode({ block })}
+  <Highlight theme={themes.github} code={code} language={language}>
+    {RenderCode({ block, ...props})}
   </Highlight>
 );
 
@@ -50,7 +55,7 @@ export const Code = ({
  * @param block Whether the code should be displayed inline or as a block.
  * @returns A component that acts a child to <Highlight />.
  */
-const RenderCode = ({ block, className, ...props }: { block?: boolean } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>) => {
+const RenderCode = ({ block, className: rootClassName, ...props }: { block?: boolean } & React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>) => {
   /**
    * Child for the <Highlight /> component.
    * @param props Props for rendering the highlighted code.
@@ -63,10 +68,10 @@ const RenderCode = ({ block, className, ...props }: { block?: boolean } & React.
   }: HightlightRenderProps) => {
     if (block) {
       return (
-        <code className={`bg-gray-100 text-gray-800 p-4 my-2 rounded font-mono whitespace-pre overflow-x-auto block ${className}`} {...props}>
+        <code className={`bg-gray-100 text-gray-800 p-4 my-2 rounded font-mono whitespace-pre overflow-x-auto block ${className} ${rootClassName}`} {...props}>
           {tokens.map((line: Token[], i: number) => (
             <span key={i} className="block">
-              <span>{i + 1}</span>
+              <span>{i + 1} </span>
               {line.map((token: Token, key: number) => (
                 <span key={key} {...getTokenProps({ token })} />
               ))}
@@ -76,16 +81,14 @@ const RenderCode = ({ block, className, ...props }: { block?: boolean } & React.
       );
     }
 
+    const allTokens = tokens.reduce((accum: Token[], next: Token[]) => accum.concat(next), []);
+
     return (
-      <>
-        {tokens.map((line: Token[], i: number) => (
-          <code key={i} className={`bg-gray-100 text-gray-800 font-mono ${className}`} {...props}>
-            {line.map((token: Token, key: number) => (
-              <span key={key} {...getTokenProps({ token })} />
-            ))}
-          </code>
+      <code className={`bg-gray-100 text-gray-800 font-mono ${className} ${rootClassName}`} {...props}>
+        {allTokens.map((token: Token, key: number) => (
+          <span key={key} {...getTokenProps({ token })} />
         ))}
-      </>
+      </code>
     );
   };
 
