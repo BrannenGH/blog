@@ -1,6 +1,10 @@
 import ReactMarkdown from "react-markdown";
 import { getArticle, getArticles } from "@/services/article";
 import { Article } from "@/models";
+import remarkGfm from "remark-gfm";
+import { TextHeader, Link } from "@/components";
+import { Highlight, themes } from "prism-react-renderer";
+import { Code } from "@/components";
 
 export async function getStaticPaths() {
   return {
@@ -21,6 +25,34 @@ export async function getStaticProps(context: { params: { slug: string } }) {
   };
 }
 
+const customComponents = {
+  h1: ({ node, ...props }: any) => (
+    <TextHeader className="text-4xl mb-4" {...props} />
+  ),
+  h2: ({ node, ...props }: any) => (
+    <TextHeader className="text-3xl mb-4" {...props} />
+  ),
+  h3: ({ node, ...props }: any) => (
+    <TextHeader className="text-2xl mb-4" {...props} />
+  ),
+  h4: ({ node, ...props }: any) => (
+    <TextHeader className="text-xl mb-4" {...props} />
+  ),
+  h5: ({ node, ...props }: any) => (
+    <TextHeader className="text-lg mb-4" {...props} />
+  ),
+  h6: ({ node, ...props }: any) => (
+    <TextHeader className="text-base mb-4" {...props} />
+  ),
+  a: ({ node, ...props }: any) => (
+    <Link className="text-blue-600 hover:underline" {...props} />
+  ),
+  code: ({ children, ...props }: any) =>
+    children.map((child: string, i: number) => (
+      <Code block={child.includes("\n")} code={child} key={i} {...props} />
+    )),
+};
+
 export default function Post({ article }: { article: Article }) {
   return (
     <article>
@@ -39,14 +71,19 @@ export default function Post({ article }: { article: Article }) {
                 className="mr-2 mb-2 inline-flex items-center px-2.5 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800"
                 key={tag}
               >
-                tag
+                {tag}
               </span>
             ))}
           </div>
         </div>
       </header>
       <div className="mt-6 prose prose-lg text-gray-500">
-        <ReactMarkdown>{article.content}</ReactMarkdown>
+        <ReactMarkdown
+          components={customComponents}
+          remarkPlugins={[remarkGfm]}
+        >
+          {article.content}
+        </ReactMarkdown>
       </div>
     </article>
   );
