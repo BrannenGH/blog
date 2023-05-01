@@ -16,10 +16,10 @@ const Home = ({ articles }: { articles: Article[] }) => {
       <TextHeader className="text-center w-full md:text-left text-4xl font-bold mb-8 mb-6">
         Latest Articles
       </TextHeader>
-      <div className="flex flex-col flex-wrap">
+      <div className="flex flex-col flex-wrap md:grid md:grid-cols-3 md:grid-gap-2">
         {articles.map((article, i) => (
           <ArticleTile
-            className="bg-mint-green-100 w-full md:w-1/3"
+            className="bg-mint-green-100 w-full my-2 md:w-auto md:mx-2"
             article={article}
             key={i}
           />
