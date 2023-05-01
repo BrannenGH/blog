@@ -29,7 +29,7 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
             <Image src={logo} alt="logo" className="w-10 h-10 m-2" />
             <Link href="/">
               <TextHeader className="flex-auto text-2xl md:text-3xl font-bold my-6">
-                Brannen's Bytes
+                Brannen&apos;s Bytes
               </TextHeader>
             </Link>
           </div>
