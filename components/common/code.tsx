@@ -45,7 +45,7 @@ export const Code = ({
   language, 
   ...props
 }: CodeProps) => (
-  <Highlight theme={themes.github} code={code} language={language ?? "tsx"}>
+  <Highlight theme={themes.github} code={code} language={language ?? "markup"}>
     {RenderCode({ block, ...props})}
   </Highlight>
 );
@@ -68,10 +68,10 @@ const RenderCode = ({ block, className: rootClassName, ...props }: { block?: boo
   }: HightlightRenderProps) => {
     if (block) {
       return (
-        <code className={`bg-gray-100 text-gray-800 p-4 my-2 rounded font-mono whitespace-pre overflow-x-auto block ${className} ${rootClassName}`} {...props}>
+        <code className={`bg-gray-100 text-gray-800 p-4 my-2 rounded font-mono whitespace-pre overflow-x-auto block ${className ?? ""} ${rootClassName ?? ""}`} {...props}>
           {tokens.map((line: Token[], i: number) => (
             <span key={i} className="block">
-              <span>{i + 1} </span>
+              <span className="select-none">{i + 1} </span>
               {line.map((token: Token, key: number) => (
                 <span key={key} {...getTokenProps({ token })} />
               ))}
@@ -84,7 +84,7 @@ const RenderCode = ({ block, className: rootClassName, ...props }: { block?: boo
     const allTokens = tokens.reduce((accum: Token[], next: Token[]) => accum.concat(next), []);
 
     return (
-      <code className={`bg-gray-100 text-gray-800 font-mono ${className} ${rootClassName}`} {...props}>
+      <code className={`bg-gray-100 text-gray-800 font-mono ${className ?? ""} ${rootClassName ?? ""}`} {...props}>
         {allTokens.map((token: Token, key: number) => (
           <span key={key} {...getTokenProps({ token })} />
         ))}

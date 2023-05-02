@@ -1,16 +1,16 @@
-import { it, expect, afterEach } from 'vitest';
+import { it, expect, afterEach, vi } from 'vitest';
 import { cleanup, render, screen } from '@testing-library/react';
 import matchers from '@testing-library/jest-dom/matchers';
+import { ArticleTile } from "..";
+import { getArticles } from "@/services/article";
 
 expect.extend(matchers);
+
+vi.mock("../../../services/article");
 
 afterEach(() => {
   cleanup();
 });
-import { ArticleTile } from "..";
-import { getArticles } from "@/services/article";
-
-jest.mock("../../../services/article");
 
 const sampleArticle = getArticles()[0];
 

@@ -26,21 +26,22 @@ const customComponents = {
   a: ({ node, ...props }: any) => (
     <Link className="text-blue-600 hover:underline" {...props} />
   ),
-  code: ({ children, ...props }: any) =>
+  code: ({ children, className, ...props }: { children: string[], className?: string }) =>
     children.map((child: string, i: number) => {
-      if (child.includes("\n")) {
-        // Grab the info string, if any.
+      const language = className?.split(" ").find(x => x.includes("language-"))?.substring("language-".length);
+      // Remove trailing newline
+      if (child.substring(child.length - 1) === "\n") {
+        child = child.substring(0, child.length - 1);
+      }
 
-        let infoString: string | undefined = child.substring(0, child.indexOf("\n"));
-        infoString = !!infoString ? infoString : undefined;
-        
+      if (child.includes("\n")) {
         return ( 
-          <Code block code={child} key={i} language={infoString} {...props} />
+          <Code block code={child} key={i} language={language} {...props} />
         )
       }
 
       return ( 
-        <Code code={child} key={i} {...props} />
+        <Code code={child} key={i} language={language} {...props} />
       );
     }),
 };

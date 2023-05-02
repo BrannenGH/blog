@@ -23,8 +23,7 @@ export async function getStaticProps(context: { params: { slug: string } }) {
 
 export default function Post({ article }: { article: Article }) {
   return (
-    <article>
-      <header>
+    <article className="w-full">
         <h1 className="text-3xl leading-9 font-extrabold text-gray-900 sm:text-4xl sm:leading-10 mb-2">
           {article.title}
         </h1>
@@ -44,10 +43,7 @@ export default function Post({ article }: { article: Article }) {
             ))}
           </div>
         </div>
-      </header>
-      <div className="mt-6 prose prose-lg text-gray-500">
         <Markdown text={article.content} />
-      </div>
     </article>
   );
 }

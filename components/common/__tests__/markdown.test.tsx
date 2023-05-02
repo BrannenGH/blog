@@ -1,5 +1,5 @@
 import { it, expect, afterEach } from 'vitest';
-import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { cleanup, render, screen, fireEvent, waitFor, getByTestId } from '@testing-library/react';
 import matchers from '@testing-library/jest-dom/matchers';
 
 expect.extend(matchers);
@@ -49,9 +49,9 @@ it("renders link correctly", () => {
   );
 });
 
-it("renders code block correctly", () => {
+it("renders inline code correctly", () => {
   const { container } = render(
-    <Markdown text="```\nconsole.log('Test Code Block');\n```"/>
+    <Markdown text="`console.log('Test Code Block');`"/>
   );
   expect(container).toHaveTextContent(
     "console.log('Test Code Block');"
@@ -59,10 +59,34 @@ it("renders code block correctly", () => {
 });
 
 it("renders code block correctly with info string", () => {
+  const testText = `
+\`\`\`bash
+echo 'Test Code Block'
+\`\`\`
+`;
   const { container } = render(
-    <Markdown text="```bash\necho 'Test Code Block'\n```"/>
+    <Markdown text={testText}/>
   );
+
   expect(container).toHaveTextContent(
     "Test Code Block"
+  );
+});
+
+const testText = `
+\`\`\`javascript
+function helloWorld() {
+  console.log("Hello, world!");
+}
+\`\`\`
+`;
+
+it.only("renders code block correctly with info string", () => {
+  const { container } = render(
+    <Markdown text={testText}/>
+  );
+
+  expect(container).toHaveTextContent(
+    "function helloWorld()"
   );
 });
