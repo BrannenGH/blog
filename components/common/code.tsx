@@ -44,7 +44,7 @@ export const Code = ({
   block,
   language, 
   ...props
-}: CodeProps) => (
+}: { code: string } & Partial<CodeProps>) => (
   <Highlight theme={themes.github} code={code} language={language ?? "markup"}>
     {RenderCode({ block, ...props})}
   </Highlight>

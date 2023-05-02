@@ -44,7 +44,7 @@ export const PageWrapper = ({ children }: { children: React.ReactNode }) => {
             </Button>
           </div>
         </header>
-        <main className="bg-white p-2 rounded">
+        <main className="bg-white bg-opacity-50 p-2 rounded">
           {children}
         </main>
       </div>

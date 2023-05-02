@@ -26,7 +26,7 @@ const customComponents = {
   a: ({ node, ...props }: any) => (
     <Link className="text-blue-600 hover:underline" {...props} />
   ),
-  code: ({ children, className, ...props }: { children: string[], className?: string }) =>
+  code: ({ children, className, ...props }: { children: string[], className?: string } & any) =>
     children.map((child: string, i: number) => {
       const language = className?.split(" ").find(x => x.includes("language-"))?.substring("language-".length);
       // Remove trailing newline
