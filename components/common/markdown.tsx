@@ -20,7 +20,7 @@ const customComponents = {
   ),
   code: ({ children, className, ...props }: { children: string[], className?: string } & any) =>
     children.map((child: string, i: number) => {
-      const language = className?.split(" ").find(x => x.includes("language-"))?.substring("language-".length);
+      const language = className?.split(" ").find((x: string) => x.includes("language-"))?.substring("language-".length);
       // Remove trailing newline
       if (child.substring(child.length - 1) === "\n") {
         child = child.substring(0, child.length - 1);
