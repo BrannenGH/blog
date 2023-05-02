@@ -31,7 +31,7 @@ const customComponents = {
     )),
 };
 
-export const Markdown = ({text, ...props}: {text: string} & Omit<Parameters<typeof ReactMarkdown>[0], "children">) => (
+export const Markdown = ({text, ...props}: {text: string} & Omit<Omit<Omit<Parameters<typeof ReactMarkdown>[0], "children">, "remarkPlugins">, "components">) => (
     <ReactMarkdown
         components={customComponents}
         remarkPlugins={[remarkGfm]}
