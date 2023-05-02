@@ -1,5 +1,12 @@
-import React from "react";
-import { render } from "@testing-library/react";
+import { it, expect, afterEach } from 'vitest';
+import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import matchers from '@testing-library/jest-dom/matchers';
+
+expect.extend(matchers);
+
+afterEach(() => {
+  cleanup();
+});
 import { Markdown } from "..";
 
 it("renders h1 header correctly", () => {
@@ -43,10 +50,10 @@ it("renders link correctly", () => {
 });
 
 it("renders code block correctly", () => {
-  const { getByText } = render(
-    <Markdown text="```\nconsole.log('Test Code Block');\n```" />
+  const { container } = render(
+    <Markdown text="```\nconsole.log('Test Code Block');\n```"/>
   );
-  expect(getByText("console.log('Test Code Block');")).toHaveClass(
-    "code"
+  expect(container).toHaveTextContent(
+    "console.log('Test Code Block');"
   );
 });

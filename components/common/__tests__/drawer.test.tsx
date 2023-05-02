@@ -1,5 +1,12 @@
-import React from "react";
-import { render, fireEvent, waitFor } from "@testing-library/react";
+import { it, expect, afterEach } from 'vitest';
+import { cleanup, render, screen, fireEvent, waitFor } from '@testing-library/react';
+import matchers from '@testing-library/jest-dom/matchers';
+
+expect.extend(matchers);
+
+afterEach(() => {
+  cleanup();
+});
 import { Drawer } from "..";
 
 it("renders drawer with hide prop as false", () => {

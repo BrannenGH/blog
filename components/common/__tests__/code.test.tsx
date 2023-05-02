@@ -1,4 +1,13 @@
-import { render } from "@testing-library/react";
+import { it, expect, afterEach } from 'vitest';
+import { cleanup, render, screen, fireEvent } from '@testing-library/react';
+import matchers from '@testing-library/jest-dom/matchers';
+
+expect.extend(matchers);
+
+afterEach(() => {
+  cleanup();
+});
+
 import { Code } from "..";
 
 it("renders code as inline", () => {

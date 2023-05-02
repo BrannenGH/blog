@@ -1,4 +1,13 @@
-import { render, screen } from "@testing-library/react";
+import { it, expect, afterEach } from 'vitest';
+import { cleanup, render, screen } from '@testing-library/react';
+import matchers from '@testing-library/jest-dom/matchers';
+
+expect.extend(matchers);
+
+afterEach(() => {
+  cleanup();
+});
+
 import { ArticleLink } from "..";
 // Will eventually need mock data when using CMS
 import { getArticles } from "@/services/article";

@@ -1,7 +1,8 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
-import { TextHeader, Link } from "@/components";
-import { Code } from "@/components";
+import { TextHeader } from "./text-header";
+import { Link } from "./link";
+import { Code } from "./code";
 
 const customComponents = {
   h1: ({ node, ...props }: any) => (
@@ -35,6 +36,7 @@ export const Markdown = ({text, ...props}: {text: string} & Omit<Omit<Omit<Param
     <ReactMarkdown
         components={customComponents}
         remarkPlugins={[remarkGfm]}
+        {...props}
     >
         {text}
     </ReactMarkdown>

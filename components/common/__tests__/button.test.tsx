@@ -1,5 +1,12 @@
-import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { it, expect, afterEach, vi } from 'vitest';
+import { cleanup, render, screen, fireEvent } from '@testing-library/react';
+import matchers from '@testing-library/jest-dom/matchers';
+
+expect.extend(matchers);
+
+afterEach(() => {
+  cleanup();
+});
 import { Button } from "..";
 
 it("renders button with text", () => {
@@ -8,7 +15,7 @@ it("renders button with text", () => {
 });
 
 it("handles click event", () => {
-  const handleClick = jest.fn();
+  const handleClick = vi.fn();
   const { getByText } = render(<Button onClick={handleClick}>Click Me</Button>);
 
   fireEvent.click(getByText("Click Me"));
