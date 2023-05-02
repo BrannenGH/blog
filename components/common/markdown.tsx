@@ -4,27 +4,19 @@ import { TextHeader } from "./text-header";
 import { Link } from "./link";
 import { Code } from "./code";
 
+const renderHeader = ({level, ...props}: {level: 1 | 2 | 3 | 4 | 5 | 6} & any) => (
+  <TextHeader level={level} {...props} />
+)
+
 const customComponents = {
-  h1: ({ node, ...props }: any) => (
-    <TextHeader className="text-4xl mb-4" {...props} />
-  ),
-  h2: ({ node, ...props }: any) => (
-    <TextHeader className="text-3xl mb-4" {...props} />
-  ),
-  h3: ({ node, ...props }: any) => (
-    <TextHeader className="text-2xl mb-4" {...props} />
-  ),
-  h4: ({ node, ...props }: any) => (
-    <TextHeader className="text-xl mb-4" {...props} />
-  ),
-  h5: ({ node, ...props }: any) => (
-    <TextHeader className="text-lg mb-4" {...props} />
-  ),
-  h6: ({ node, ...props }: any) => (
-    <TextHeader className="text-base mb-4" {...props} />
-  ),
+  h1: ({ node, ...props }: any) => renderHeader({level: 1, ...props}),
+  h2: ({ node, ...props }: any) => renderHeader({level: 2, ...props}),
+  h3: ({ node, ...props }: any) => renderHeader({level: 3, ...props}),
+  h4: ({ node, ...props }: any) => renderHeader({level: 4, ...props}),
+  h5: ({ node, ...props }: any) => renderHeader({level: 5, ...props}),
+  h6: ({ node, ...props }: any) => renderHeader({level: 6, ...props}),
   a: ({ node, ...props }: any) => (
-    <Link className="text-blue-600 hover:underline" {...props} />
+    <Link className="underline" {...props} />
   ),
   code: ({ children, className, ...props }: { children: string[], className?: string } & any) =>
     children.map((child: string, i: number) => {
