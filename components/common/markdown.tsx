@@ -27,9 +27,22 @@ const customComponents = {
     <Link className="text-blue-600 hover:underline" {...props} />
   ),
   code: ({ children, ...props }: any) =>
-    children.map((child: string, i: number) => (
-      <Code block={child.includes("\n")} code={child} key={i} {...props} />
-    )),
+    children.map((child: string, i: number) => {
+      if (child.includes("\n")) {
+        // Grab the info string, if any.
+
+        let infoString: string | undefined = child.substring(0, child.indexOf("\n"));
+        infoString = !!infoString ? infoString : undefined;
+        
+        return ( 
+          <Code block code={child} key={i} language={infoString} {...props} />
+        )
+      }
+
+      return ( 
+        <Code code={child} key={i} {...props} />
+      );
+    }),
 };
 
 export const Markdown = ({text, ...props}: {text: string} & Omit<Omit<Omit<Parameters<typeof ReactMarkdown>[0], "children">, "remarkPlugins">, "components">) => (

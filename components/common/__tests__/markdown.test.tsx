@@ -57,3 +57,12 @@ it("renders code block correctly", () => {
     "console.log('Test Code Block');"
   );
 });
+
+it("renders code block correctly with info string", () => {
+  const { container } = render(
+    <Markdown text="```bash\necho 'Test Code Block'\n```"/>
+  );
+  expect(container).toHaveTextContent(
+    "Test Code Block"
+  );
+});
