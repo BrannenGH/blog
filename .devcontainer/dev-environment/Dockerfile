@@ -22,7 +22,7 @@ RUN useradd -m -u 1001 -g users -G wheel,docker -s /bin/zsh develop
 
 #INSTALL NODE
 
-ENV NODE_VERSION 19.8.1
+ENV NODE_VERSION 20.1.0
 
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
@@ -61,11 +61,6 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   # smoke tests
   && node --version \
   && npm --version
-
-# INSTALL YARN
-RUN corepack enable
-
-RUN corepack prepare yarn@stable --activate
 
 USER develop
 WORKDIR $HOME
