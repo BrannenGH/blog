@@ -35,7 +35,7 @@ export const ArticleTile = ({
         <Text className="text-sm text-gray-600 mb-2">{article.author}</Text>
         <Text className="text-sm text-gray-600">{article.date}</Text>
         <Text className="text-sm text-gray-600 mb-4">
-          {article.contentPreview}
+          {article.summary}
         </Text>
         <Button
           component={(props: any) => (

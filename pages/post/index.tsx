@@ -6,7 +6,7 @@ import { Article } from "@/models";
 export async function getStaticProps() {
   return {
     // Passed to the page component as props
-    props: { articles: getArticles() },
+    props: { articles: await getArticles() },
   };
 }
 

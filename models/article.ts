@@ -1,9 +1,9 @@
 export type RawArticle = {
   title: string;
   author: string;
-  date: string;
+  published: string;
   content: string;
-  contentPreview: string;
+  summary: string;
   tags: string[];
 };
 

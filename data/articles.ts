@@ -22,7 +22,7 @@ Instead, you can add it to the test run parameters using \`overrideTestRunParame
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 \`\`\``,
-    contentPreview:
+    summary:
       "When using the `testPlan` method to select VSTest tests for execution in Azure DevOps (ADO) YAML pipelines",
     tags: ["Code Snippet"],
   },

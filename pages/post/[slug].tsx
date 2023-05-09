@@ -4,7 +4,7 @@ import { Article } from "@/models";
 
 export async function getStaticPaths() {
   return {
-    paths: getArticles().map((article) => ({
+    paths: (await getArticles()).map((article) => ({
       params: {
         slug: article.slug,
       },
@@ -17,7 +17,7 @@ export async function getStaticPaths() {
 export async function getStaticProps(context: { params: { slug: string } }) {
   return {
     // Passed to the page component as props
-    props: { article: getArticle(context.params.slug) },
+    props: { article: await getArticle(context.params.slug) },
   };
 }
 
