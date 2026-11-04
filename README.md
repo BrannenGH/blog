@@ -31,7 +31,7 @@ regeneration). The page renders without it.
 | ------------- | -------------------------------------------------------------- |
 | `GITHUB_TOKEN`| Optional. Raises GitHub's API rate limit.                      |
 | `GITHUB_DATA` | Set to `off` to skip GitHub requests (tests, offline builds).  |
-| `SITE_URL`    | Public origin, used for absolute URLs in page metadata.        |
+| `SITE_URL`    | Public origin for absolute URLs in page metadata. Defaults to Vercel's production URL on Vercel. |
 
 ## Test
 
