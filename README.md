@@ -31,7 +31,7 @@ regeneration). The page renders without it.
 | ------------- | -------------------------------------------------------------- |
 | `GITHUB_TOKEN`| Optional. Raises GitHub's API rate limit.                      |
 | `GITHUB_DATA` | Set to `off` to skip GitHub requests (tests, offline builds).  |
-| `SITE_URL`    | Public origin for canonical URLs, the sitemap and share tags, read at build time. Defaults to Vercel's production URL on Vercel, else `https://hallb.vercel.app`. |
+| `SITE_URL`    | Optional. Public origin for canonical URLs, the sitemap and share tags, read at build time. Defaults to `https://brannen.hallb.me`. |
 
 ## Container image
 
@@ -45,8 +45,8 @@ scripts/smoke-image blog    # serves every page, 404s and optimised images, not 
 ```
 
 The image takes `SITE_URL` as a build argument
-(`--build-arg SITE_URL=https://example.org`); Release passes the
-repository variable `SITE_URL`.
+(`--build-arg SITE_URL=https://staging.hallb.me`) for builds served
+elsewhere; Release passes the repository variable `SITE_URL` if one is set.
 
 `.next/` in the container is the server's cache of regenerated pages and
 optimised images; it can be discarded at any time.

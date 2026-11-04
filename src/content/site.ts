@@ -4,7 +4,7 @@ export const site = {
     "Brannen Hall builds open, native applications and connected tools, with careful engineering and AI-assisted development.",
   githubUrl: "https://github.com/BrannenGH",
   /** The public address, used when the build doesn't name another (SITE_URL). */
-  url: "https://hallb.vercel.app",
+  url: "https://brannen.hallb.me",
   language: "en",
   locale: "en_US",
 } as const;

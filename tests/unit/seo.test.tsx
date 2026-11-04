@@ -23,21 +23,13 @@ beforeEach(() => {
 });
 
 describe("resolveSiteUrl", () => {
-  it("prefers SITE_URL", () => {
-    expect(
-      resolveSiteUrl({ SITE_URL: "https://hallb.me", VERCEL_PROJECT_PRODUCTION_URL: "hallb.vercel.app" }).href,
-    ).toBe("https://hallb.me/");
+  it("is the site's public address", () => {
+    expect(resolveSiteUrl({}).href).toBe("https://brannen.hallb.me/");
+    expect(resolveSiteUrl({ SITE_URL: "" }).href).toBe("https://brannen.hallb.me/");
   });
 
-  it("uses Vercel's production host when SITE_URL is unset", () => {
-    expect(resolveSiteUrl({ VERCEL_PROJECT_PRODUCTION_URL: "hallb-git-main.vercel.app" }).href).toBe(
-      "https://hallb-git-main.vercel.app/",
-    );
-  });
-
-  it("falls back to the site's public address, never localhost", () => {
-    expect(resolveSiteUrl({}).href).toBe("https://hallb.vercel.app/");
-    expect(resolveSiteUrl({ SITE_URL: "" }).href).toBe("https://hallb.vercel.app/");
+  it("can be overridden with SITE_URL", () => {
+    expect(resolveSiteUrl({ SITE_URL: "https://staging.hallb.me" }).href).toBe("https://staging.hallb.me/");
   });
 });
 
@@ -75,7 +67,7 @@ describe("robots.txt", () => {
   it("allows crawling and points to the sitemap", () => {
     expect(robots()).toEqual({
       rules: { userAgent: "*", allow: "/" },
-      sitemap: "https://hallb.vercel.app/sitemap.xml",
+      sitemap: "https://brannen.hallb.me/sitemap.xml",
     });
   });
 });
@@ -83,10 +75,10 @@ describe("robots.txt", () => {
 describe("sitemap.xml", () => {
   it("lists every page in the navigation by its absolute URL", () => {
     expect(sitemap().map((entry) => entry.url)).toEqual([
-      "https://hallb.vercel.app/",
-      "https://hallb.vercel.app/projects",
-      "https://hallb.vercel.app/design",
-      "https://hallb.vercel.app/about",
+      "https://brannen.hallb.me/",
+      "https://brannen.hallb.me/projects",
+      "https://brannen.hallb.me/design",
+      "https://brannen.hallb.me/about",
     ]);
   });
 });
@@ -107,17 +99,17 @@ describe("structured data", () => {
     expect(graph).toContainEqual(
       expect.objectContaining({
         "@type": "WebSite",
-        "@id": "https://hallb.vercel.app/#website",
-        url: "https://hallb.vercel.app/",
+        "@id": "https://brannen.hallb.me/#website",
+        url: "https://brannen.hallb.me/",
         name: "Brannen Hall",
         inLanguage: "en",
-        publisher: { "@id": "https://hallb.vercel.app/#person" },
+        publisher: { "@id": "https://brannen.hallb.me/#person" },
       }),
     );
     expect(graph).toContainEqual(
       expect.objectContaining({
         "@type": "Person",
-        "@id": "https://hallb.vercel.app/#person",
+        "@id": "https://brannen.hallb.me/#person",
         name: "Brannen Hall",
         jobTitle: "Automation Engineer III",
         worksFor: { "@type": "Organization", name: "Western National Insurance" },
@@ -132,8 +124,8 @@ describe("structured data", () => {
 
     expect(data).toMatchObject({
       "@type": "ProfilePage",
-      url: "https://hallb.vercel.app/about",
-      mainEntity: { "@type": "Person", "@id": "https://hallb.vercel.app/#person", name: "Brannen Hall" },
+      url: "https://brannen.hallb.me/about",
+      mainEntity: { "@type": "Person", "@id": "https://brannen.hallb.me/#person", name: "Brannen Hall" },
     });
   });
 

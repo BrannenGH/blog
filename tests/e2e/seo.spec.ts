@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 // The build runs without SITE_URL, so absolute URLs use the site's public address.
-const origin = "https://hallb.vercel.app";
+const origin = "https://brannen.hallb.me";
 const paths = ["/", "/projects", "/design", "/about"];
 
 test.describe("search engines", () => {
