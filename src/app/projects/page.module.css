@@ -1,0 +1,149 @@
+.intro {
+  padding-top: 50px;
+}
+
+.title {
+  margin-top: 22px;
+  font-size: 59px;
+}
+
+.lead {
+  margin: 16px 0 0 3px;
+  font-size: 20px;
+}
+
+.feature {
+  display: grid;
+  grid-template-columns: minmax(0, 790px) minmax(0, 1fr);
+  column-gap: 56px;
+  margin-top: 50px;
+}
+
+.featureArt {
+  position: relative;
+}
+
+.featureArt img {
+  width: 100%;
+  height: auto;
+}
+
+.specimen {
+  position: absolute;
+  left: 4.3%;
+  bottom: 13.3%;
+  color: var(--parchment);
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.featureText {
+  display: flex;
+  flex-direction: column;
+  padding-top: 28px;
+}
+
+.featureName {
+  margin: 29px 0 0 -4px;
+  font-size: 49px;
+}
+
+.featureDescription {
+  display: grid;
+  gap: 1.45em;
+  margin-top: 19px;
+  font-size: 19px;
+  max-width: 400px;
+}
+
+.featureActions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  margin-top: 97px;
+}
+
+.updated {
+  color: var(--ink-muted);
+  font-size: 12px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin-top: 111px;
+}
+
+.cards > li {
+  display: flex;
+}
+
+.cards > li > * {
+  flex: 1;
+}
+
+@media (max-width: 1199px) {
+  .feature {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    column-gap: 40px;
+  }
+
+  .featureActions {
+    margin-top: 40px;
+  }
+
+  .cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    margin-top: 72px;
+  }
+}
+
+@media (max-width: 767px) {
+  .intro {
+    padding-top: 40px;
+  }
+
+  .title {
+    margin-top: 16px;
+    font-size: 40px;
+    line-height: 1.2;
+  }
+
+  .lead {
+    margin: 16px 0 0;
+    font-size: 18px;
+  }
+
+  .feature {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 36px;
+  }
+
+  .specimen {
+    font-size: 11px;
+  }
+
+  .featureText {
+    padding-top: 32px;
+  }
+
+  .featureName {
+    margin: 12px 0 0;
+    font-size: 40px;
+  }
+
+  .featureDescription {
+    font-size: 17px;
+  }
+
+  .featureActions {
+    margin-top: 28px;
+  }
+
+  .cards {
+    grid-template-columns: minmax(0, 1fr);
+    margin-top: 48px;
+  }
+}
