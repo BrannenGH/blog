@@ -2,16 +2,16 @@
 
 name: CI
 
+# Release (release.yml) runs this for pushes to main before publishing.
 on:
   pull_request:
-  push:
-    branches: [main]
+  workflow_call:
 
 permissions:
   contents: read
 
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -55,3 +55,11 @@ jobs:
           name: playwright-report
           path: playwright-report/
           retention-days: 7
+
+  container:
+    name: container image
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - run: podman build --format docker -t blog:ci -f Containerfile .
+      - run: scripts/smoke-image blog:ci

@@ -33,6 +33,27 @@ regeneration). The page renders without it.
 | `GITHUB_DATA` | Set to `off` to skip GitHub requests (tests, offline builds).  |
 | `SITE_URL`    | Public origin for absolute URLs in page metadata. Defaults to Vercel's production URL on Vercel. |
 
+## Container image
+
+`Containerfile` builds Next's standalone server on Node (Alpine), run as an
+unprivileged user on port 3000:
+
+```sh
+podman build -t blog -f Containerfile .
+podman run --rm -p 3000:3000 blog
+scripts/smoke-image blog    # serves every page, 404s and optimised images, not as root
+```
+
+`.next/` in the container is the server's cache of regenerated pages and
+optimised images; it can be discarded at any time.
+
+## Release
+
+Every push to `main` runs CI (`release.yml` calls `ci.yml`), then builds the
+image, smoke-tests it and publishes `ghcr.io/brannengh/blog:latest` and
+`:sha-<commit>`. The server follows `:latest` itself (Podman auto-update),
+so a green push to `main` is a deploy.
+
 ## Test
 
 ```sh
@@ -45,7 +66,8 @@ npm run build && npm run test:e2e   # Playwright against `next start`
 End-to-end tests need Chromium: `npx playwright install chromium`. They run
 at the 1440 px desktop size, plus a narrow-screen check of the home page.
 
-CI (`.github/workflows/ci.yml`) runs all of the above on every pull request;
+CI (`.github/workflows/ci.yml`) runs all of the above on every pull request,
+plus a build and smoke test of the container image;
 `attribution.yml` runs `scripts/check-attribution` (tested by
 `scripts/test-check-attribution`), which fails a pull request whose commits,
 title or description credit an AI coding agent.
