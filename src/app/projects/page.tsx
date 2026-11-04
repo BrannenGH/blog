@@ -1,16 +1,20 @@
 import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ButtonLink";
+import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
 import { ProjectCard } from "@/components/ProjectCard";
 import { SectionLabel } from "@/components/SectionLabel";
 import { experiments, kabacus, repositoryUrl } from "@/content/projects";
 import { formatUpdated, getRepoActivity } from "@/lib/github";
+import { pageMetadata } from "@/lib/metadata";
+import { projectsStructuredData } from "@/lib/structured-data";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/projects",
   title: "Projects",
   description: "Open apps and connected tools by Brannen Hall: Kabacus, and MCP servers for TickTick, Paperless and YNAB.",
-};
+});
 
 // Repository activity comes from GitHub's API; re-render at most hourly.
 export const revalidate = 3600;
@@ -24,6 +28,7 @@ export default async function ProjectsPage() {
 
   return (
     <PageShell current="/projects" footer={["Brannen Hall", "Software, with character."]}>
+      <JsonLd data={projectsStructuredData()} />
       <header className={styles.intro}>
         <SectionLabel>Open software / Projects &amp; experiments</SectionLabel>
         <h1 className={styles.title}>Applications for Everybody</h1>

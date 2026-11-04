@@ -1,16 +1,24 @@
+import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ButtonLink";
+import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
 import { Portrait } from "@/components/Portrait";
 import { SectionLabel } from "@/components/SectionLabel";
 import { TextLink } from "@/components/TextLink";
 import { WovenIcon } from "@/components/WovenIcon";
+import { site } from "@/content/site";
 import { focusAreas, hero, vision } from "@/content/home";
 import { kabacus, repositoryUrl } from "@/content/projects";
+import { pageMetadata } from "@/lib/metadata";
+import { homeStructuredData } from "@/lib/structured-data";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = pageMetadata({ path: "/", description: site.description });
 
 export default function HomePage() {
   return (
     <PageShell current="/" footer={["Brannen Hall", "Software"]}>
+      <JsonLd data={homeStructuredData()} />
       <section className={styles.hero} aria-labelledby="hero-title">
         <div className={styles.heroText}>
           <h1 id="hero-title" className={styles.title}>
