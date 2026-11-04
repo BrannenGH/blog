@@ -1,19 +1,26 @@
 import type { Metadata } from "next";
+import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
 import { Portrait } from "@/components/Portrait";
 import { SectionLabel } from "@/components/SectionLabel";
 import { aboutHero, biography, education, experience } from "@/content/about";
+import { person } from "@/content/site";
+import { pageMetadata } from "@/lib/metadata";
+import { aboutStructuredData } from "@/lib/structured-data";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/about",
   title: "About Me",
   description:
     "Brannen Hall is a Minneapolis-based automation engineer and software developer at Western National Insurance.",
-};
+  openGraph: { type: "profile", firstName: person.givenName, lastName: person.familyName },
+});
 
 export default function AboutPage() {
   return (
     <PageShell current="/about" footer={["Brannen Hall", "Experience that informs what comes next"]}>
+      <JsonLd data={aboutStructuredData()} />
       <section className={styles.hero} aria-labelledby="about-title">
         <div>
           <SectionLabel>{aboutHero.eyebrow}</SectionLabel>

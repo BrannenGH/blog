@@ -3,12 +3,14 @@ import { PageShell } from "@/components/PageShell";
 import { SectionLabel } from "@/components/SectionLabel";
 import { WovenIcon } from "@/components/WovenIcon";
 import { designPage as d, palette } from "@/content/design";
+import { pageMetadata } from "@/lib/metadata";
 import styles from "./page.module.css";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
+  path: "/design",
   title: "App design",
   description: "Verdure, the design language behind Brannen Hall’s apps and this site: palette, type, materials and icons.",
-};
+});
 
 export default function DesignPage() {
   return (

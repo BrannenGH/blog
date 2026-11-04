@@ -31,7 +31,7 @@ regeneration). The page renders without it.
 | ------------- | -------------------------------------------------------------- |
 | `GITHUB_TOKEN`| Optional. Raises GitHub's API rate limit.                      |
 | `GITHUB_DATA` | Set to `off` to skip GitHub requests (tests, offline builds).  |
-| `SITE_URL`    | Public origin for absolute URLs in page metadata. Defaults to Vercel's production URL on Vercel. |
+| `SITE_URL`    | Public origin for canonical URLs, the sitemap and share tags, read at build time. Defaults to Vercel's production URL on Vercel, else `https://hallb.vercel.app`. |
 
 ## Container image
 
@@ -43,6 +43,10 @@ podman build -t blog -f Containerfile .
 podman run --rm -p 3000:3000 blog
 scripts/smoke-image blog    # serves every page, 404s and optimised images, not as root
 ```
+
+The image takes `SITE_URL` as a build argument
+(`--build-arg SITE_URL=https://example.org`); Release passes the
+repository variable `SITE_URL`.
 
 `.next/` in the container is the server's cache of regenerated pages and
 optimised images; it can be discarded at any time.
@@ -71,6 +75,15 @@ plus a build and smoke test of the container image;
 `attribution.yml` runs `scripts/check-attribution` (tested by
 `scripts/test-check-attribution`), which fails a pull request whose commits,
 title or description credit an AI coding agent.
+
+## Search engines
+
+Every page has a canonical URL, a description, and Open Graph and Twitter
+tags (`src/lib/metadata.ts`); the share image is the headshot
+(`public/opengraph-image.jpg`). `/robots.txt` and `/sitemap.xml` are generated
+from `src/app/robots.ts` and `src/app/sitemap.ts`, and the home, projects and
+about pages carry schema.org JSON-LD (`src/lib/structured-data.ts`). The 404
+page is `noindex`.
 
 ## Layout
 

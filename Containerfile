@@ -12,7 +12,9 @@ ENV NEXT_TELEMETRY_DISABLED=1
 COPY package.json package-lock.json ./
 RUN npm ci
 COPY . .
-RUN npm run build
+# The public origin for canonical URLs and the sitemap, fixed at build time.
+ARG SITE_URL=
+RUN SITE_URL="$SITE_URL" npm run build
 
 FROM ${NODE} AS runtime
 WORKDIR /app
