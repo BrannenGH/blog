@@ -4,8 +4,7 @@
 
 # Starts the site's container image and checks that it serves every page,
 # the 404 page, robots.txt and the sitemap, the optimised headshot on
-# About, and runs
-# unprivileged.
+# About, and runs unprivileged.
 #
 #   scripts/smoke-image <image>
 
