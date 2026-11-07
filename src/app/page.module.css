@@ -1,7 +1,4 @@
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  gap: var(--column-gap);
   padding-block: 96px 57px;
 }
 
@@ -28,10 +25,6 @@
   flex-wrap: wrap;
   gap: 16px;
   margin: 32px 0 0 4px;
-}
-
-.portrait {
-  align-self: start;
 }
 
 .section {
@@ -139,8 +132,6 @@
 
 @media (max-width: 767px) {
   .hero {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 44px;
     padding-block: 47px 52px;
   }
 
@@ -162,10 +153,6 @@
     flex-direction: column;
     gap: 12px;
     margin: 33px 0 0;
-  }
-
-  .portrait {
-    justify-self: center;
   }
 
   .section {

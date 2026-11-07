@@ -36,14 +36,11 @@ describe("home page", () => {
     ]);
   });
 
-  it("puts the actions before the portrait", () => {
+  it("links projects and about without showing the portrait", () => {
     render(<HomePage />);
-    const projects = screen.getByRole("link", { name: "Explore my projects" });
-    const portrait = screen.getByRole("img", { name: "Brannen Hall" });
-
-    expect(projects).toHaveAttribute("href", "/projects");
+    expect(screen.getByRole("link", { name: "Explore my projects" })).toHaveAttribute("href", "/projects");
     expect(screen.getByRole("link", { name: "About me" })).toHaveAttribute("href", "/about");
-    expect(projects.compareDocumentPosition(portrait) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(screen.queryByRole("img", { name: "Brannen Hall" })).not.toBeInTheDocument();
   });
 
   it("links the Kabacus source", () => {
@@ -121,6 +118,13 @@ describe("design page", () => {
 });
 
 describe("about page", () => {
+  it("shows the portrait after the introduction", () => {
+    render(<AboutPage />);
+    const title = screen.getByRole("heading", { level: 1 });
+    const portrait = screen.getByRole("img", { name: "Brannen Hall" });
+    expect(title.compareDocumentPosition(portrait) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
   it("lists work experience newest first", () => {
     render(<AboutPage />);
     const experience = screen.getByRole("heading", { name: "02 / Work experience" }).closest("section")!;
