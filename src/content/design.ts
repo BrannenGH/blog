@@ -66,7 +66,7 @@ export const designPage = {
     label: "05 / Website implementation",
     notes: [
       "Server-rendered React: /, /projects, /design, /about. Render content and links on the server; hydrate interactive controls as needed. Fetch public GitHub data server-side and cache it. Use semantic landmarks, real links, useful page titles, responsive images, and locally hosted fonts.",
-      "Layout: 1440 px desktop canvas, 1296 px content, 72 px margins. Below 768 px: one column with 24 px gutters; portrait follows the introduction and actions. At 768–1199 px: two columns where space allows. Keep body text near 65 characters per line. Home flows from vision to areas of focus to work in development.",
+      "Layout: 1440 px desktop canvas, 1296 px content, 72 px margins. Below 768 px: one column with 24 px gutters; on About, the portrait follows the introduction. The portrait appears only on About. At 768–1199 px: two columns where space allows. Keep body text near 65 characters per line. Home flows from vision to areas of focus to work in development.",
     ],
     ink: "Primary text / #263E35. Use forest and parchment for the website; native apps follow the user’s system theme.",
   },

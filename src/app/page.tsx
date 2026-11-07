@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { ButtonLink } from "@/components/ButtonLink";
 import { JsonLd } from "@/components/JsonLd";
 import { PageShell } from "@/components/PageShell";
-import { Portrait } from "@/components/Portrait";
 import { SectionLabel } from "@/components/SectionLabel";
 import { TextLink } from "@/components/TextLink";
 import { WovenIcon } from "@/components/WovenIcon";
@@ -32,7 +31,6 @@ export default function HomePage() {
             </ButtonLink>
           </div>
         </div>
-        <Portrait className={styles.portrait} />
       </section>
 
       <section className={`${styles.section} ${styles.vision}`} aria-labelledby="vision-heading">

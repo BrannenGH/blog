@@ -3,8 +3,8 @@
 # Copyright 2026 Brannen Hall. All rights reserved.
 
 # Starts the site's container image and checks that it serves every page,
-# the 404 page, robots.txt and the sitemap, optimised images, and runs
-# unprivileged.
+# the 404 page, robots.txt and the sitemap, the optimised headshot on
+# About, and runs unprivileged.
 #
 #   scripts/smoke-image <image>
 
@@ -43,7 +43,7 @@ expect 200 /art/portrait-panel.svg image/svg+xml
 expect 200 /robots.txt text/plain
 expect 200 /sitemap.xml application/xml
 expect 200 /opengraph-image.jpg image/jpeg
-headshot="$(curl -fs "$base/" | grep -o '/_next/image?url=[^"& ]*' | head -n1)"
+headshot="$(curl -fs "$base/about" | grep -o '/_next/image?url=[^"& ]*' | head -n1)"
 expect 200 "$headshot&w=384&q=75" image/
 
 user="$("$engine" exec "$name" id -u)"

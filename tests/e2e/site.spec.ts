@@ -77,7 +77,7 @@ test("the desktop layout keeps 1296 px of content with 72 px margins", async ({ 
 test("the headshot is a responsive image and fonts come from this site", async ({ page }) => {
   const requests: URL[] = [];
   page.on("request", (request) => requests.push(new URL(request.url())));
-  await page.goto("/");
+  await page.goto("/about");
 
   const portrait = page.getByRole("img", { name: "Brannen Hall" });
   await expect(portrait).toHaveAttribute("srcset", /\/_next\/image\?url=/);
@@ -88,13 +88,11 @@ test("the headshot is a responsive image and fonts come from this site", async (
   expect(new Set(requests.map((url) => url.origin))).toEqual(new Set([new URL(page.url()).origin]));
 });
 
-test("below 768 px the home page is one column with the portrait after the actions", async ({ page }) => {
+test("below 768 px the home page is one column with full-width actions", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/");
 
   const actions = await page.getByRole("link", { name: "About me", exact: true }).boundingBox();
-  const portrait = await page.getByRole("img", { name: "Brannen Hall" }).boundingBox();
-  expect(portrait!.y).toBeGreaterThan(actions!.y + actions!.height);
   expect(actions!.x).toBe(24);
   expect(actions!.width).toBe(342);
   expect(await page.evaluate(() => document.documentElement.scrollWidth)).toBe(390);
