@@ -9,3 +9,4 @@ tests
 scripts
 *.md
 .env*
+.claude
